@@ -13,58 +13,29 @@ if let file = Bundle.main.url(forResource: "input", withExtension: "txt") {
         
         switch game.last {
         case "X":
-            switch game.first {
-            case "A":
-                shapeScore += 3
-            case "B":
-                shapeScore += 1
-            case "C":
-                shapeScore += 2
-            default:
-                shapeScore += 0
-            }
-            gameOutcome += 0
-            
+            shapeScore += 1
         case "Y":
-            switch game.first {
-            case "A":
-                shapeScore += 1
-            case "B":
-                shapeScore += 2
-            case "C":
-                shapeScore += 3
-            default:
-                shapeScore += 0
-            }
-            gameOutcome += 3
-            
+            shapeScore += 2
         case "Z":
-            switch game.first {
-            case "A":
-                shapeScore += 2
-            case "B":
-                shapeScore += 3
-            case "C":
-                shapeScore += 1
-            default:
-                shapeScore += 0
-            }
-            gameOutcome += 6
-            
+            shapeScore += 3
         default:
-            shapeScore += 0
-            gameOutcome += 0
+            break
         }
-        print("Shape score is " + String(shapeScore))
-        print("Game score is " + String(gameOutcome))
-        bestScore = gameOutcome + shapeScore
+        
+        if (game.first == "A" && game.last == "X") || game.first == "B" && game.last == "Y" || game.first == "C" && game.last == "Z"  {
+            gameOutcome += 3
+        } else if ( (game.first == "A" && game.last == "Z") || (game.first == "B" && game.last == "X") || (game.first == "C" && game.last == "Y") ) {
+            gameOutcome += 0
+        } else {
+            gameOutcome += 6
+        }
     }
     
     bestScore = gameOutcome + shapeScore
     
     print("\n")
     print("Best possible score that we can accumulate according to the game plan is " + String(bestScore) + " points")
-   
+    
 } else {
     print("Error finding file")
 }
