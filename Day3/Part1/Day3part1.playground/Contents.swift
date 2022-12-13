@@ -37,7 +37,6 @@ if let file = Bundle.main.url(forResource: "input", withExtension: "txt") {
     print("\n")
     print("The sum of the priorities of the item types that have appeared in both compartments is: " + String(sumOfPriorities))
 
-   
 } else {
     print("Error finding file")
 }
