@@ -13,22 +13,51 @@ if let file = Bundle.main.url(forResource: "input", withExtension: "txt") {
         
         switch game.last {
         case "X":
-            shapeScore += 1
+            switch game.first {
+            case "A":
+                shapeScore += 3
+            case "B":
+                shapeScore += 1
+            case "C":
+                shapeScore += 2
+            default:
+                shapeScore += 0
+            }
+            gameOutcome += 0
+            
         case "Y":
-            shapeScore += 2
+            switch game.first {
+            case "A":
+                shapeScore += 1
+            case "B":
+                shapeScore += 2
+            case "C":
+                shapeScore += 3
+            default:
+                shapeScore += 0
+            }
+            gameOutcome += 3
+            
         case "Z":
-            shapeScore += 3
+            switch game.first {
+            case "A":
+                shapeScore += 2
+            case "B":
+                shapeScore += 3
+            case "C":
+                shapeScore += 1
+            default:
+                shapeScore += 0
+            }
+            gameOutcome += 6
+            
         default:
             shapeScore += 0
-        }
-        
-        if (game.first == "A" && game.last == "X") || game.first == "B" && game.last == "Y" || game.first == "C" && game.last == "Z"  {
-            gameOutcome += 3
-        } else if ( (game.first == "A" && game.last == "Z") || (game.first == "B" && game.last == "X") || (game.first == "C" && game.last == "Y") ) {
             gameOutcome += 0
-        } else {
-            gameOutcome += 6
         }
+        print("Shape score is " + String(shapeScore))
+        print("Game score is " + String(gameOutcome))
+        bestScore = gameOutcome + shapeScore
     }
     
     bestScore = gameOutcome + shapeScore
