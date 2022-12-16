@@ -36,8 +36,8 @@ if let file = Bundle.main.url(forResource: "input", withExtension: "txt") {
         let fromCrate = Int(numbersFromRule[1]) ?? -1
         let toCrate = Int(numbersFromRule[2]) ?? -1
         
-        for i in (0..<numberOfCratesToMove).reversed() {
-            listOfAllStacks[toCrate - 1].append(listOfAllStacks[fromCrate - 1].remove(at: listOfAllStacks[fromCrate - 1].count - 1 - i))
+        for indexOfCrateToBeRemoved in (0..<numberOfCratesToMove).reversed() {
+            listOfAllStacks[toCrate - 1].append(listOfAllStacks[fromCrate - 1].remove(at: listOfAllStacks[fromCrate - 1].count - 1 - indexOfCrateToBeRemoved))
         }
     }
     
